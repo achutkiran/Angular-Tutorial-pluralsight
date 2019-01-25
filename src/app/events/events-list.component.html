@@ -3,7 +3,5 @@
         Upcoming Angular Events
     </h1>
     <hr>
-    <event-thumbnail #thumbnail [event]="event1"></event-thumbnail>
-    <h3>{{thumbnail.childValue}} </h3>
-    <button (click)="thumbnail.logFoo()">log in Child</button>
+    <event-thumbnail [event]="event1"></event-thumbnail>
 </div>

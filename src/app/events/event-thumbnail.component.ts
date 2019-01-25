@@ -7,9 +7,4 @@ import { Component, Input, EventEmitter, Output } from '@angular/core'
 
 export class EventThumbnailComponent {
     @Input() event: any
-    childValue:string ="some value"
-
-    logFoo(){
-        console.log('foo') 
-     }
 }
