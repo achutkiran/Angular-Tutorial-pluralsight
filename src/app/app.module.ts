@@ -16,6 +16,8 @@ import { ToastrService } from './common/toastr.service';
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import {MatButtonModule} from '@angular/material/button'
+import {MatCardModule} from '@angular/material/card';
+
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import {MatButtonModule} from '@angular/material/button'
     AppRoutingModule,
     MatToolbarModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule
   ],
   providers: [EventService,ToastrService],
   bootstrap: [EventsAppComponent]
