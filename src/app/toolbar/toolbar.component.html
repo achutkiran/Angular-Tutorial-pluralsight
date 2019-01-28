@@ -2,6 +2,10 @@
     <span>
         ngEvents
     </span>
-    <button mat-button [routerLink]="['/events']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">All Events</button>
-    <button mat-button [routerLink]="['/events/new']" routerLinkActive="active">Create Event</button>
+    <mat-nav-list>
+        <mat-list-item [routerLink]="['/events']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">All Events</mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list>
+        <mat-list-item [routerLink]="['/events/new']" routerLinkActive="active" >Create Event</mat-list-item>
+    </mat-nav-list>
 </mat-toolbar>

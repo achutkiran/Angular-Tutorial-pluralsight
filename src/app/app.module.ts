@@ -21,6 +21,8 @@ import { MatToolbarModule } from '@angular/material/toolbar'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import {MatButtonModule} from '@angular/material/button'
 import {MatCardModule} from '@angular/material/card';
+import {MatListModule} from '@angular/material/list';
+
 
 
 
@@ -40,7 +42,8 @@ import {MatCardModule} from '@angular/material/card';
     MatToolbarModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatListModule
   ],
   providers: [
     EventService, //or { provide: EventService, useValue: EventService}
