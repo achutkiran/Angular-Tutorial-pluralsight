@@ -9,7 +9,7 @@ import { EventDetailsComponent } from './events/event-details/event-details.comp
 import { AppToolbar } from './toolbar/toolbar.component'
 import { CreateEventComponent } from './events/create-event.component'
 import { Error404Component } from './errors/404.component'
-
+import { FormsModule } from '@angular/forms'
 // Services
 import { EventService } from './events/shared/event.service'
 import { ToastrService } from './common/toastr.service';
@@ -23,7 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import {MatButtonModule} from '@angular/material/button'
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 
@@ -40,11 +41,14 @@ import {MatListModule} from '@angular/material/list';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     MatToolbarModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
     EventService, //or { provide: EventService, useValue: EventService}
