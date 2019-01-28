@@ -3,47 +3,47 @@
 <form #newEventForm="ngForm" (ngSubmit)="saveEvent(newEventForm.value)" class="flexForm">
     <mat-form-field appearance="outline">
         <mat-label>Event Name</mat-label>
-        <input matInput (ngModel)="newEvent.name" name="name" required type="text" placeholder="Name of your event...">
+        <input matInput [(ngModel)]="newEvent.name" name="name" required type="text" placeholder="Name of your event...">
         <mat-error *ngIf="newEventForm.controls['name']?.invalid">Required</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Event Date</mat-label>
-        <input matInput (ngModel)="newEvent.date" name="date" required type="text" placeholder="format (mm/dd/yyy)...">
+        <input matInput [(ngModel)]="newEvent.date" name="date" required type="text" placeholder="format (mm/dd/yyy)...">
         <mat-error *ngIf="newEventForm.controls['date']?.invalid">Required</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Event Time</mat-label>
-        <input matInput (ngModel)="newEvent.time" name="time" required type="text" placeholder="start and end time...">
+        <input matInput [(ngModel)]="newEvent.time" name="time" required type="text" placeholder="start and end time...">
         <mat-error *ngIf="newEventForm.controls['time']?.invalid">Required</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Event Price</mat-label>
-        <input matInput (ngModel)="newEvent.price" name="price" required type="number" placeholder="Event price...">
+        <input matInput [(ngModel)]="newEvent.price" name="price" required type="number" placeholder="Event price...">
         <mat-error *ngIf="newEventForm.controls['price']?.invalid">Required</mat-error>
     </mat-form-field>
     <div ngModelGroup="location">
         <mat-form-field appearance="outline">
             <mat-label>Address</mat-label>
-            <input matInput (ngModel)="newEvent.address" name="address" type="text" placeholder="Address of event...">
+            <input matInput [(ngModel)]="newEvent.address" name="address" type="text" placeholder="Address of event...">
         </mat-form-field>
         <div>
             <mat-form-field appearance="outline">
                 <mat-label>City</mat-label>
-                <input matInput (ngModel)="newEvent.city" name="city" type="text" placeholder="City...">
+                <input matInput [(ngModel)]="newEvent.city" name="city" type="text" placeholder="City...">
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Country</mat-label>
-                <input matInput (ngModel)="newEvent.country" name="country" type="text" placeholder="Country...">
+                <input matInput [(ngModel)]="newEvent.country" name="country" type="text" placeholder="Country...">
             </mat-form-field>
         </div>
     </div>
     <mat-form-field appearance="outline">
         <mat-label>Online Url</mat-label>
-        <input matInput (ngModel)="newEvent.onlineUrl" name="onlineUrl" type="text" placeholder="Online Url...">
+        <input matInput [(ngModel)]="newEvent.onlineUrl" name="onlineUrl" type="text" placeholder="Online Url...">
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Image</mat-label>
-        <input matInput (ngModel)="newEvent.imageUrl" name="imageUrl" required pattern=".*\/.*.(png|jpg)" type="text" placeholder="url of image...">
+        <input matInput [(ngModel)]="newEvent.imageUrl" name="imageUrl" required pattern=".*\/.*.(png|jpg)" type="text" placeholder="url of image...">
         <mat-error *ngIf="newEventForm.controls['imageUrl']?.errors?.pattern">Must be a png or jpg url</mat-error>
         <mat-error *ngIf="newEventForm.controls['imageUrl']?.errors?.required">Required</mat-error>
     </mat-form-field>
