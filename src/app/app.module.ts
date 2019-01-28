@@ -15,6 +15,7 @@ import { EventService } from './events/shared/event.service'
 import { ToastrService } from './common/toastr.service';
 import { EventRouteActivator } from './events/event-details/event-route-activator.service'
 import { EventListResolver } from './events/events-list-resolver.service'
+import { AuthService } from './user/auth.service'
 
 // Angular material
 import { MatToolbarModule } from '@angular/material/toolbar'
@@ -50,6 +51,7 @@ import {MatListModule} from '@angular/material/list';
     ToastrService, 
     EventRouteActivator,
     EventListResolver,
+    AuthService,
     { 
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
