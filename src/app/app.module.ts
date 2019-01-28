@@ -8,9 +8,12 @@ import { EventThumbnailComponent } from './events/event-thumbnail.component'
 import { EventDetailsComponent } from './events/event-details/event-details.component'
 import { AppToolbar } from './toolbar/toolbar.component'
 import { CreateEventComponent } from './events/create-event.component'
+import { Error404Component } from './errors/404.component'
+
 // Services
 import { EventService } from './events/shared/event.service'
 import { ToastrService } from './common/toastr.service';
+import { EventRouteActivator } from './events/event-details/event-route-activator.service'
 
 // Angular material
 import { MatToolbarModule } from '@angular/material/toolbar'
@@ -27,7 +30,8 @@ import {MatCardModule} from '@angular/material/card';
     EventThumbnailComponent,
     EventDetailsComponent,
     AppToolbar,
-    CreateEventComponent
+    CreateEventComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,7 @@ import {MatCardModule} from '@angular/material/card';
     MatButtonModule,
     MatCardModule
   ],
-  providers: [EventService,ToastrService],
+  providers: [EventService,ToastrService, EventRouteActivator],
   bootstrap: [EventsAppComponent]
 })
 export class AppModule { }
