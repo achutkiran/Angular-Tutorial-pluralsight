@@ -41,7 +41,22 @@ import {MatCardModule} from '@angular/material/card';
     MatButtonModule,
     MatCardModule
   ],
-  providers: [EventService,ToastrService, EventRouteActivator],
+  providers: [
+    EventService, //or { provide: EventService, useValue: EventService}
+    ToastrService, 
+    EventRouteActivator,
+    { 
+      provide: 'canDeactivateCreateEvent',
+      useValue: checkDirtyState
+    } //or you can use servcie
+  ],
   bootstrap: [EventsAppComponent]
 })
 export class AppModule { }
+
+export function checkDirtyState(component:CreateEventComponent){
+  if(component.isDirty){
+    return window.confirm('you have not saved this event, do you really want to cancel?')
+  }
+  return true
+}
