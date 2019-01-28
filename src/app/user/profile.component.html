@@ -1,9 +1,18 @@
 <h1>Edit Your Profile</h1>
 <hr>
 <div>
-    <h3>[Edit profile form will go here]</h3>
-    <br>
-    <br>
-    <button mat-raised-button color="primary">Save</button>
-    <button mat-raised-button color="accent">Cancel</button>
+    <form [formGroup]="profileForm" class="flexForm" (ngSubmit)="saveProfile(profileForm.value)">
+        <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" placeholder="First Name..." formControlName="firstName">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput type="text" placeholder="Last Name..." formControlName="lastName">
+        </mat-form-field>
+        <div>
+            <button mat-raised-button color="primary" type="submit">Save</button>
+            <button mat-raised-button color="accent" type="button" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
 </div>
