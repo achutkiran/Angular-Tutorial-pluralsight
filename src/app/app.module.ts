@@ -7,7 +7,7 @@ import { EventsListComponent } from './events/events-list.component'
 import { EventThumbnailComponent } from './events/event-thumbnail.component'
 import { EventDetailsComponent } from './events/event-details/event-details.component'
 import { AppToolbar } from './toolbar/toolbar.component'
-
+import { CreateEventComponent } from './events/create-event.component'
 // Services
 import { EventService } from './events/shared/event.service'
 import { ToastrService } from './common/toastr.service';
@@ -26,7 +26,8 @@ import {MatCardModule} from '@angular/material/card';
     EventsListComponent,
     EventThumbnailComponent,
     EventDetailsComponent,
-    AppToolbar
+    AppToolbar,
+    CreateEventComponent
   ],
   imports: [
     BrowserModule,
