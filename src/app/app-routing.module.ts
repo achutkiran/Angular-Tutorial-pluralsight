@@ -8,7 +8,7 @@ import { EventRouteActivator } from './events/event-details/event-route-activato
 import { EventListResolver } from './events/events-list-resolver.service';
 
 const routes: Routes = [
-  { path: 'events/new', component: CreateEventComponent, canDeactivate: ['canDeactivateCreateEvent']},
+  { path: 'events/new', component: CreateEventComponent, canDeactivate: ['canDeactivateCreateEvent']}, //present in app.module.ts
   { path: 'events', component: EventsListComponent, resolve:{events:EventListResolver} },
   { path: 'events/:id', component: EventDetailsComponent, canActivate: [EventRouteActivator] }, // /events/1 or /events/2
   { path: '404', component: Error404Component },

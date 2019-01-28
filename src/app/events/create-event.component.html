@@ -47,8 +47,9 @@
         <mat-error *ngIf="newEventForm.controls['imageUrl']?.errors?.pattern">Must be a png or jpg url</mat-error>
         <mat-error *ngIf="newEventForm.controls['imageUrl']?.errors?.required">Required</mat-error>
     </mat-form-field>
+    <img [src]="newEventForm.controls['imageUrl'].value" *ngIf="newEventForm.controls['imageUrl']?.valid">
     <div>
-        <button mat-raised-button color="primary" type="submit">Save</button>
-        <button mat-raised-button color="accent" [disabled]="newEventForm.invalid" type="button" (click)="cancel()">Cancel</button>
+        <button mat-raised-button color="primary" [disabled]="newEventForm.invalid" type="submit">Save</button>
+        <button mat-raised-button color="accent" type="button" (click)="cancel()">Cancel</button>
     </div>
 </form>
