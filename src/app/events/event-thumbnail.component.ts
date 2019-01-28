@@ -6,6 +6,7 @@ import { Component, Input, EventEmitter, Output } from '@angular/core'
     styles: [`
         .pad-left { margin-left:10px; }
         .green { color: green; }
+        .bold { font-weight: bold; }
     `]
 })
 
