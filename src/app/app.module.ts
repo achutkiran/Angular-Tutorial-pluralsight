@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { EventsAppComponent } from './events-app.component';
 import { EventsListComponent } from './events/events-list.component'
 import { EventThumbnailComponent } from './events/event-thumbnail.component'
+import { EventDetailsComponent } from './events/event-details/event-details.component'
 
 // Services
 import { EventService } from './events/shared/event.service'
@@ -14,7 +15,8 @@ import { ToastrService } from './common/toastr.service';
   declarations: [
     EventsAppComponent,
     EventsListComponent,
-    EventThumbnailComponent
+    EventThumbnailComponent,
+    EventDetailsComponent
   ],
   imports: [
     BrowserModule,
