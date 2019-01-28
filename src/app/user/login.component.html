@@ -3,14 +3,16 @@
 <form class="flexForm" #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
     <mat-form-field appearance="outline">
         <mat-label>User Name</mat-label>
-        <input matInput placeholder="User Name..." (ngModel)="userName" name="userName">
+        <input matInput placeholder="User Name..." (ngModel)="userName" name="userName" required>
+        <mat-error *ngIf="loginForm.controls['userName']?.invalid">User name is required</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-        <input matInput placeholder="Password..." type="password" (ngModel)="password" name="password"> 
+        <input matInput placeholder="Password..." type="password" (ngModel)="password" name="password" required>
+        <mat-error *ngIf="loginForm.controls['password']?.invalid">Password is required</mat-error>
     </mat-form-field>
     <div>
-        <button mat-raised-button color="primary" type="submit">Login</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Login</button>
         <button mat-raised-button color="accent" type="button" (click)="cancel()">Cancel</button>
     </div>
 </form>
