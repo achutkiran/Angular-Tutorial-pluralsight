@@ -8,6 +8,7 @@ import { EventThumbnailComponent } from './events/event-thumbnail.component'
 
 // Services
 import { EventService } from './events/shared/event.service'
+import { ToastrService } from './common/toastr.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { EventService } from './events/shared/event.service'
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [EventService],
+  providers: [EventService,ToastrService],
   bootstrap: [EventsAppComponent]
 })
 export class AppModule { }
