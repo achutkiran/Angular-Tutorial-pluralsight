@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class EventService {
     getEvents(){
-        return EVENTS
+      let subject = new Subject()
+      setTimeout(() => {subject.next(EVENTS); subject.complete(); }, 1000)
+      return subject //used to introduce delay to simulate real world data transfer from server
     }
 
     getEvent (id:number){
