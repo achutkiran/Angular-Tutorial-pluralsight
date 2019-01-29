@@ -6,10 +6,11 @@ import { EventsAppComponent } from './events-app.component';
 import { EventsListComponent } from './events/events-list.component'
 import { EventThumbnailComponent } from './events/event-thumbnail.component'
 import { EventDetailsComponent } from './events/event-details/event-details.component'
+import { CreateSessionComponent } from './events/event-details/create-session.component'
 import { AppToolbar } from './toolbar/toolbar.component'
 import { CreateEventComponent } from './events/create-event.component'
 import { Error404Component } from './errors/404.component'
-import { FormsModule } from '@angular/forms'
+import { FormsModule,ReactiveFormsModule } from '@angular/forms'
 // Services
 import { EventService } from './events/shared/event.service'
 import { ToastrService } from './common/toastr.service';
@@ -25,6 +26,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -36,19 +38,22 @@ import { MatInputModule } from '@angular/material/input';
     EventDetailsComponent,
     AppToolbar,
     CreateEventComponent,
-    Error404Component
+    Error404Component,
+    CreateSessionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
     MatListModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [
     EventService, //or { provide: EventService, useValue: EventService}

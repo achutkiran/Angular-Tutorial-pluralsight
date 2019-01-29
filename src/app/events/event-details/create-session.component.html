@@ -1,0 +1,42 @@
+<h3>Create Session</h3>
+<form class="flexForm" [formGroup]="newSessionForm" (ngSubmit)="saveSession(newSessionForm.value)">
+    <mat-form-field appearance="outline">
+        <mat-label>Session Name</mat-label>
+        <input formControlName="name" matInput type="text" placeholder="session name...">
+        <mat-error *ngIf="name.invalid">Required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Presenter</mat-label>
+        <input formControlName="presenter" matInput type="text" placeholder="presenter...">
+        <mat-error *ngIf="presenter.invalid">Required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Duration</mat-label>
+        <mat-select formControlName="duration" placeholder="select duration...">
+            <mat-option value="1">Half Hour</mat-option>    
+            <mat-option value="2">1 hour</mat-option>    
+            <mat-option value="3">Half Day</mat-option>    
+            <mat-option value="4">Full Day</mat-option>    
+        </mat-select>
+        <mat-error *ngIf="duration.invalid">Required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>level</mat-label>
+        <mat-select formControlName="level" placeholder="select level...">
+            <mat-option value="Beginner">Beginner</mat-option>    
+            <mat-option value="Intermediate">Intermediate</mat-option>    
+            <mat-option value="Advanced">Advanced</mat-option>    
+        </mat-select>
+        <mat-error *ngIf="level.invalid">Required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Abstract</mat-label>
+        <textarea formControlName="abstract" matInput type="text" placeholder="abstract..."></textarea>
+        <mat-error *ngIf="abstract.hasError('required')">Required</mat-error>
+        <mat-error *ngIf="abstract.hasError('maxlength')">Cannot exceed 400 characters</mat-error>
+    </mat-form-field>
+    <div>
+        <button color="primary" mat-raised-button type="submit" [disabled]="newSessionForm.invalid">Save</button>
+        <button color="accent" mat-raised-button type="button">Cancel</button>
+    </div>
+</form>
