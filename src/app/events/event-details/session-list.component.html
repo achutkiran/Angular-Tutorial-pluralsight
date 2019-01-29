@@ -1,9 +1,7 @@
 <div *ngFor="let session of sessions">
     <mat-card style="margin-bottom:5px;">
-        <collapsible-card>
-            <mat-card-title class="cardTitle">{{session.name}}</mat-card-title>
-            <mat-card-subtitle>{{session.presenter}}</mat-card-subtitle>
-            <mat-card-content cardContent> <!-- prefered way -->
+        <collapsible-card [title]="session.name" [subtitle]="session.presenter">
+            <mat-card-content>
                 <div>Duration: {{session.duration}}</div>
                 <div>Level: {{session.level}}</div>
                 <p>{{session.abstract}}</p>
