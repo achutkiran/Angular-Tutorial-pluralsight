@@ -8,6 +8,7 @@ import { EventThumbnailComponent } from './events/event-thumbnail.component'
 import { EventDetailsComponent } from './events/event-details/event-details.component'
 import { CreateSessionComponent } from './events/event-details/create-session.component'
 import { SessionListComponent } from './events/event-details/session-list.component'
+import { CollapsibleCardComponent } from './common/collapsible-card.component'
 import { AppToolbar } from './toolbar/toolbar.component'
 import { CreateEventComponent } from './events/create-event.component'
 import { Error404Component } from './errors/404.component'
@@ -41,7 +42,8 @@ import { MatSelectModule } from '@angular/material/select';
     CreateEventComponent,
     Error404Component,
     CreateSessionComponent,
-    SessionListComponent
+    SessionListComponent,
+    CollapsibleCardComponent
   ],
   imports: [
     BrowserModule,
