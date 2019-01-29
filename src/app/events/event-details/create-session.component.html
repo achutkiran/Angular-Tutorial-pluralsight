@@ -34,6 +34,7 @@
         <textarea formControlName="abstract" matInput type="text" placeholder="abstract..."></textarea>
         <mat-error *ngIf="abstract.hasError('required')">Required</mat-error>
         <mat-error *ngIf="abstract.hasError('maxlength')">Cannot exceed 400 characters</mat-error>
+        <mat-error *ngIf="abstract.hasError('restrictedWords')">Restricted words found: {{abstract.errors['restrictedWords']}} </mat-error>
     </mat-form-field>
     <div>
         <button color="primary" mat-raised-button type="submit" [disabled]="newSessionForm.invalid">Save</button>
