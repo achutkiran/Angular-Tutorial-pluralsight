@@ -15,7 +15,7 @@ import { Error404Component } from './errors/404.component'
 import { FormsModule,ReactiveFormsModule } from '@angular/forms'
 // Services
 import { EventService } from './events/shared/event.service'
-import { ToastrService } from './common/toastr.service';
+import { TOASTR_TOKEN, Toastr } from './common/toastr.service';
 import { EventRouteActivator } from './events/event-details/event-route-activator.service'
 import { EventListResolver } from './events/events-list-resolver.service'
 import { AuthService } from './user/auth.service'
@@ -35,7 +35,8 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
-
+//js global objects
+let toastr:Toastr = window['toastr'];
 
 
 @NgModule({
@@ -70,7 +71,10 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
   ],
   providers: [
     EventService, //or { provide: EventService, useValue: EventService}
-    ToastrService, 
+    {
+      provide: TOASTR_TOKEN,
+      useValue: toastr
+    }, 
     EventRouteActivator,
     EventListResolver,
     AuthService,
