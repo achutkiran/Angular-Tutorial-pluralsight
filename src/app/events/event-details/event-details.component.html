@@ -24,6 +24,10 @@
     <hr>
     <div class="flexbox">
         <h1>Sessions</h1>
+        <mat-button-toggle-group [(ngModel)]="sortBy">
+            <mat-button-toggle value="name">By Name</mat-button-toggle>
+            <mat-button-toggle value="votes">By Votes</mat-button-toggle>
+        </mat-button-toggle-group>
         <mat-radio-group [(ngModel)]="filterBy">
             <mat-radio-button value="all">All</mat-radio-button>
             <mat-radio-button value="beginner">Beginner</mat-radio-button>
@@ -32,6 +36,6 @@
         </mat-radio-group>
         <button mat-button color="primary" (click)="addSession()">Add Session</button>
     </div>
-    <session-list *ngIf="!addMode" [sessions]="event?.sessions" [filterBy]="filterBy"></session-list>
+    <session-list *ngIf="!addMode" [sessions]="event?.sessions" [filterBy]="filterBy" [sortBy]="sortBy"></session-list>
     <create-session *ngIf="addMode"(saveNewSession)="saveNewSession($event)" (cancelAddSession)="cancelAddSession()"></create-session>
 </div>
