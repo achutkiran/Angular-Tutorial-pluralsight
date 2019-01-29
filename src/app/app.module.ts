@@ -20,6 +20,9 @@ import { EventRouteActivator } from './events/event-details/event-route-activato
 import { EventListResolver } from './events/events-list-resolver.service'
 import { AuthService } from './user/auth.service'
 
+// Pipes
+import { DurationPipe } from './events/shared/duration.pipe'
+
 // Angular material
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -43,7 +46,8 @@ import { MatSelectModule } from '@angular/material/select';
     Error404Component,
     CreateSessionComponent,
     SessionListComponent,
-    CollapsibleCardComponent
+    CollapsibleCardComponent,
+    DurationPipe
   ],
   imports: [
     BrowserModule,

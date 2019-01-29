@@ -2,7 +2,7 @@
     <mat-card style="margin-bottom:5px;">
         <collapsible-card [title]="session.name" [subtitle]="session.presenter">
             <mat-card-content>
-                <div>Duration: {{session.duration}}</div>
+                <div>Duration: {{session.duration | duration}}</div>
                 <div>Level: {{session.level}}</div>
                 <p>{{session.abstract}}</p>
             </mat-card-content>
