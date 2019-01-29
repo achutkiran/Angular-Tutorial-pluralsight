@@ -4,16 +4,16 @@ import { Component, Input } from "@angular/core";
     selector:'collapsible-card',
     template:`
         <mat-card-header (click)="toggleContent()" style="cursor:pointer;">
-            <mat-card-title>{{title}}</mat-card-title>
-            <mat-card-subtitle *ngIf="visible">{{subtitle}}</mat-card-subtitle>
+            <span>
+                <ng-content select=".cardTitle"></ng-content>
+                <ng-content select="mat-card-subtitle"></ng-content>
+            </span>
         </mat-card-header>
-        <ng-content *ngIf="visible"></ng-content>  
+        <ng-content select="[cardContent]" *ngIf="visible"></ng-content>  
     `
 })
 
 export class CollapsibleCardComponent{
-    @Input() title:string
-    @Input() subtitle:string
     visible: boolean = true
 
     toggleContent(){
