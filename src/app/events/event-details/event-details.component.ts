@@ -7,13 +7,15 @@ import { IEvent, ISession } from '../shared/event.model';
     templateUrl:'./event-details.component.html',
     styles: [`
         .event-image { height:100px; }
-        .flexbox { display: flex; align-items: baseline; }
+        .flexbox { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap;  }
+        mat-radio-button { margin-left: 16px; margin-bottom:16px;}
     `]
 })
 
 export class EventDetailsComponent {
     event:IEvent
     addMode:boolean = false
+    filterBy:string = "all"
     constructor (private eventService: EventService,
         private route: ActivatedRoute) { }
 

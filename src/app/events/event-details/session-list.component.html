@@ -1,4 +1,4 @@
-<div *ngFor="let session of sessions">
+<div *ngFor="let session of visibleSessions">
     <mat-card style="margin-bottom:5px;">
         <collapsible-card [title]="session.name" [subtitle]="session.presenter">
             <mat-card-content>
