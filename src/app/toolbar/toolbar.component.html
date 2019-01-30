@@ -10,7 +10,7 @@
             <mat-list-item [routerLink]="['/events/new']" routerLinkActive="active" >Create Event</mat-list-item>
         </mat-nav-list>
     </div>
-    <input type="text" type="search" placeholder="Search Sessions" class="searchBox">
+    <input #search type="text" type="search" placeholder="Search Sessions" class="searchBox" (keyup.enter)="searchSessions(search.value)">
     <mat-nav-list>
         <mat-list-item *ngIf="!authService.isAuthenticated()" [routerLink]="['/user/login']" routerLinkActive="active">Login</mat-list-item>
         <mat-list-item *ngIf="authService.isAuthenticated()" [routerLink]="['/user/profile']" routerLinkActive="active" >Welcome {{authService.currentUser.firstName}}</mat-list-item>

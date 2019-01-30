@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { IEvent, ISession } from './event.model';
 
@@ -23,6 +23,24 @@ export class EventService {
     updateEvent(event:IEvent){
       let eventIndex = EVENTS.findIndex(e => e.id == event.id)
       EVENTS[eventIndex] = event
+    }
+
+    searchSessions(searchTerm:string){
+      let term = searchTerm.toLowerCase();
+      let results: ISession [] = [];
+      EVENTS.forEach(event => {
+        event.sessions.forEach(session => {
+          if(session.name.toLowerCase().includes(term)){
+            session['eventId'] = event.id;
+            results.push(session)
+          }
+        })
+      })
+      let emitter = new EventEmitter(true);
+      setTimeout(() =>{
+        emitter.emit(results)
+      },100); //to simulate real world
+      return emitter
     }
 }
 
