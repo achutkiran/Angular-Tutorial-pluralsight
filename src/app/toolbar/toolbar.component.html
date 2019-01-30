@@ -1,13 +1,16 @@
-<mat-toolbar color="primary">
-    <span>
-        ngEvents
-    </span>
-    <mat-nav-list>
-        <mat-list-item [routerLink]="['/events']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">All Events</mat-list-item>
-    </mat-nav-list>
-    <mat-nav-list>
-        <mat-list-item [routerLink]="['/events/new']" routerLinkActive="active" >Create Event</mat-list-item>
-    </mat-nav-list>
+<mat-toolbar color="primary" class="mainFlexbox">
+    <div class="navFlexbox">
+        <span>
+            ngEvents
+        </span>
+        <mat-nav-list>
+            <mat-list-item [routerLink]="['/events']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">All Events</mat-list-item>
+        </mat-nav-list>
+        <mat-nav-list>
+            <mat-list-item [routerLink]="['/events/new']" routerLinkActive="active" >Create Event</mat-list-item>
+        </mat-nav-list>
+    </div>
+    <input type="text" type="search" placeholder="Search Sessions" class="searchBox">
     <mat-nav-list>
         <mat-list-item *ngIf="!authService.isAuthenticated()" [routerLink]="['/user/login']" routerLinkActive="active">Login</mat-list-item>
         <mat-list-item *ngIf="authService.isAuthenticated()" [routerLink]="['/user/profile']" routerLinkActive="active" >Welcome {{authService.currentUser.firstName}}</mat-list-item>

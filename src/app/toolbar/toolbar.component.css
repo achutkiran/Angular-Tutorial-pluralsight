@@ -1,3 +1,21 @@
 mat-nav-list > mat-list-item.active { 
     color: orange !important;
 }
+
+.searchBox{
+    height: 50%;
+    border-radius: 100px;
+    padding: 5px 16px;
+    font-size: 14px;
+    outline: none;
+}
+
+.navFlexbox{
+    display: flex;
+    align-items: baseline;
+}
+
+.mainFlexbox{
+    display: flex;
+    justify-content: space-between;
+}
