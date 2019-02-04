@@ -13,6 +13,8 @@ import { AppToolbar } from './toolbar/toolbar.component'
 import { CreateEventComponent } from './events/create-event.component'
 import { Error404Component } from './errors/404.component'
 import { FormsModule,ReactiveFormsModule } from '@angular/forms'
+import { SearchDialog } from './common/search-dialog.component'
+
 // Services
 import { EventService } from './events/shared/event.service'
 import { TOASTR_TOKEN, Toastr } from './common/toastr.service';
@@ -34,6 +36,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 //js global objects
 let toastr:Toastr = window['toastr'];
@@ -51,7 +55,8 @@ let toastr:Toastr = window['toastr'];
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleCardComponent,
-    DurationPipe
+    DurationPipe,
+    SearchDialog
   ],
   imports: [
     BrowserModule,
@@ -67,7 +72,11 @@ let toastr:Toastr = window['toastr'];
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    SearchDialog
   ],
   providers: [
     EventService, //or { provide: EventService, useValue: EventService}

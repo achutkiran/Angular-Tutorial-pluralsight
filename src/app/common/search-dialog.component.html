@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Search Results</h1>
+<div mat-dialog-content>
+    <mat-nav-list>
+        <mat-list-item *ngFor="let session of data">
+            {{session.name}}
+        </mat-list-item>
+    </mat-nav-list>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="close()">Close</button>
+</div>
