@@ -24,6 +24,8 @@ export class EventDetailsComponent {
         // let id:number = parseInt(this.route.snapshot.params['id']) //It is a bug page doesn't change if it is same page navigation due to onInit
         this.route.params.forEach((params:Params) => {
             this.event = this.eventService.getEvent(parseInt(params['id']))
+            this.addMode = false
+            this.filterBy = "all"
         })
     }
 
