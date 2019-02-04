@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { EventService } from '../shared/event.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { IEvent, ISession } from '../shared/event.model';
 
 @Component({
@@ -21,8 +21,10 @@ export class EventDetailsComponent {
         private route: ActivatedRoute) { }
 
     ngOnInit(){
-        let id:number = parseInt(this.route.snapshot.params['id']) 
-        this.event = this.eventService.getEvent(id)
+        // let id:number = parseInt(this.route.snapshot.params['id']) //It is a bug page doesn't change if it is same page navigation due to onInit
+        this.route.params.forEach((params:Params) => {
+            this.event = this.eventService.getEvent(parseInt(params['id']))
+        })
     }
 
     addSession(){
