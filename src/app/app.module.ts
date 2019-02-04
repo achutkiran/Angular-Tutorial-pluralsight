@@ -25,6 +25,9 @@ import { AuthService } from './user/auth.service'
 // Pipes
 import { DurationPipe } from './events/shared/duration.pipe'
 
+// Directives
+import { HighlightDirective } from './common/highlight.directive'
+
 // Angular material
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -56,7 +59,8 @@ let toastr:Toastr = window['toastr'];
     SessionListComponent,
     CollapsibleCardComponent,
     DurationPipe,
-    SearchDialog
+    SearchDialog,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
