@@ -16,4 +16,7 @@ export class SearchDialog {
     close(){
         this.dialogRef.close()
     }
+    open(id:number){
+        this.dialogRef.close(id)
+    }
 }

@@ -3,7 +3,17 @@ import { ISession } from '../shared/event.model';
 
 @Component({
     selector: 'session-list',
-    templateUrl: './session-list.component.html'
+    templateUrl: './session-list.component.html',
+    styles:[`
+        .selected {
+            animation-name: selected-bg-color;
+            animation-duration: 3s;
+        }
+        @keyframes selected-bg-color {
+            from { background-color: lightcoral; }
+            to { background-color: transparent; }
+        }
+    `]
 })
 
 export class SessionListComponent implements OnChanges{

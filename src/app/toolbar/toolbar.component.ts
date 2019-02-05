@@ -19,9 +19,14 @@ export class AppToolbar {
     searchSessions(searchTerm: string){
         this.eventService.searchSessions(searchTerm).subscribe((searchResult) =>{
             this.searchResults = searchResult
-            this.dialog.open(SearchDialog, {
+            let dialogRef = this.dialog.open(SearchDialog, {
                 width: '500px',
                 data: this.searchResults
+            })
+            dialogRef.afterClosed().subscribe(id =>{
+                let element = document.getElementById(id)
+                element.scrollIntoView({behavior:"smooth", block:"center"})
+                element.classList.add("selected")
             })
         })
     }

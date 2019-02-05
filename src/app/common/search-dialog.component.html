@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>Search Results</h1>
 <div mat-dialog-content>
     <mat-nav-list>
-        <mat-list-item *ngFor="let session of data" [routerLink]="['/events',session['eventId']]">
+        <mat-list-item *ngFor="let session of data" [routerLink]="['/events',session['eventId']]" (click)="open(session.id)">
             {{session.name}}
         </mat-list-item>
     </mat-nav-list>

@@ -1,5 +1,5 @@
-<div *ngFor="let session of visibleSessions">
-    <mat-card style="margin-bottom:5px;">
+<ng-container *ngFor="let session of visibleSessions">
+    <mat-card style="margin-bottom:5px;" id="{{session.id}}">
         <collapsible-card [title]="session.name" [subtitle]="session.presenter">
             <mat-card-content>
                 <div>Duration: {{session.duration | duration}}</div>
@@ -8,4 +8,4 @@
             </mat-card-content>
         </collapsible-card>
     </mat-card>
-</div>
+</ng-container>
