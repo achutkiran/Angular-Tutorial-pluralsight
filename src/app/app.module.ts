@@ -21,6 +21,7 @@ import { TOASTR_TOKEN, Toastr } from './common/toastr.service';
 import { EventRouteActivator } from './events/event-details/event-route-activator.service'
 import { EventListResolver } from './events/events-list-resolver.service'
 import { AuthService } from './user/auth.service'
+import { VoterService } from './events/event-details/voter.service'
 
 // Pipes
 import { DurationPipe } from './events/shared/duration.pipe'
@@ -84,6 +85,7 @@ let toastr:Toastr = window['toastr'];
   ],
   providers: [
     EventService, //or { provide: EventService, useValue: EventService}
+    VoterService,
     {
       provide: TOASTR_TOKEN,
       useValue: toastr

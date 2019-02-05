@@ -1,4 +1,11 @@
-<ng-container *ngFor="let session of visibleSessions">
+<div *ngFor="let session of visibleSessions" class="flexBox">
+    <div class="votes" *ngIf="loggedIn()">
+        <i *ngIf="userHasVoted(session); else noVote" class="material-icons pointer" [style.color]="'royalblue'" (click)="removeVoter(session)">favorite</i>
+        <ng-template #noVote>
+            <i class="material-icons pointer" (click)="addVoter(session)">favorite_border</i>
+        </ng-template>
+        <div>{{session.voters.length}}</div>
+    </div>
     <mat-card style="margin-bottom:5px;" id="{{session.id}}">
         <collapsible-card [title]="session.name" [subtitle]="session.presenter">
             <mat-card-content>
@@ -8,4 +15,4 @@
             </mat-card-content>
         </collapsible-card>
     </mat-card>
-</ng-container>
+</div>

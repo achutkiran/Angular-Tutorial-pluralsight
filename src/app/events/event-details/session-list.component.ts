@@ -1,5 +1,7 @@
 import { Component, Input, OnChanges } from "@angular/core";
 import { ISession } from '../shared/event.model';
+import { VoterService } from './voter.service';
+import { AuthService } from 'src/app/user/auth.service';
 
 @Component({
     selector: 'session-list',
@@ -13,6 +15,21 @@ import { ISession } from '../shared/event.model';
             from { background-color: lightcoral; }
             to { background-color: transparent; }
         }
+        .flexBox {
+            display:flex;
+            flex-direction: row;
+        }
+        .votes {
+            padding-left: 8px;
+            padding-right: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .pointer {
+            cursor: pointer;
+        }
     `]
 })
 
@@ -21,6 +38,8 @@ export class SessionListComponent implements OnChanges{
     @Input() filterBy:string
     @Input() sortBy:string
     visibleSessions: ISession[]
+
+    constructor(private voterService:VoterService, private userService:AuthService) { }
 
     ngOnChanges(){
         if(this.sessions) {
@@ -49,6 +68,30 @@ export class SessionListComponent implements OnChanges{
         // both equal = 0
         // s2 votes > s1 votes > 0
         // s2 votes < s1 votes < 0
+    }
+    public userHasVoted(session:ISession){
+        let userName = this.userService.fetchCurrentUserName()
+        return this.voterService.userHasVoted(session,userName)
+    }
+
+    public addVoter(session: ISession){
+        let userName = this.userService.fetchCurrentUserName()
+        this.voterService.addVoter(session,userName)
+        if(this.sortBy == "votes"){
+            this.visibleSessions.sort(this.sortByVoteDesc)
+        }
+    }
+    
+    public removeVoter(session: ISession){
+        let userName = this.userService.fetchCurrentUserName()
+        this.voterService.deleteVoter(session,userName)
+        if(this.sortBy == "votes"){
+            this.visibleSessions.sort(this.sortByVoteDesc)
+        }
+    }
+
+    public loggedIn():boolean{
+        return this.userService.isAuthenticated()
     }
 
 

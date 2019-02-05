@@ -21,4 +21,8 @@ export class AuthService {
         this.currentUser.firstName = firstName
         this.currentUser.lastName = lastName
     }
+
+    fetchCurrentUserName():string {
+        return this.currentUser.userName
+    }
 }
