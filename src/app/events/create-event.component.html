@@ -21,7 +21,7 @@
         <input matInput (ngModel)="newEvent.price" name="price" required type="number" placeholder="Event price...">
         <mat-error *ngIf="newEventForm.controls['price']?.invalid">Required</mat-error>
     </mat-form-field>
-    <div ngModelGroup="location">
+    <div ngModelGroup="location" validateLocation #locationGroup="ngModelGroup">
         <mat-form-field appearance="outline">
             <mat-label>Address</mat-label>
             <input matInput (ngModel)="newEvent.address" name="address" type="text" placeholder="Address of event...">
@@ -39,7 +39,7 @@
     </div>
     <mat-form-field appearance="outline">
         <mat-label>Online Url</mat-label>
-        <input matInput (ngModel)="newEvent.onlineUrl" name="onlineUrl" type="text" placeholder="Online Url...">
+        <input matInput (ngModel)="newEvent.onlineUrl" name="onlineUrl" type="text" placeholder="Online Url..." (change)="locationGroup.control.controls['address'].updateValueAndValidity()">
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Image</mat-label>

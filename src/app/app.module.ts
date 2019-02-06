@@ -28,6 +28,7 @@ import { DurationPipe } from './events/shared/duration.pipe'
 
 // Directives
 import { HighlightDirective } from './common/highlight.directive'
+import { LocationValidator } from './events/location-validator.directive'
 
 // Angular material
 import { MatToolbarModule } from '@angular/material/toolbar'
@@ -61,7 +62,8 @@ let toastr:Toastr = window['toastr'];
     CollapsibleCardComponent,
     DurationPipe,
     SearchDialog,
-    HighlightDirective
+    HighlightDirective,
+    LocationValidator
   ],
   imports: [
     BrowserModule,
