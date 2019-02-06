@@ -1,6 +1,6 @@
 import * as express from 'express';
 
-let port = process.env.PORT || 8808
+let port = process.env.PORT || 8000
 
 let app = express();
 import expressConfig from './expressConfig';

@@ -28,7 +28,7 @@ export function requiresApiLogin(req:Request, res:Response, next:NextFunction){
     }
 };
 
-export function requiresRole(role){
+export function requiresRole(role:string){
     return function(req:Request, res:Response,next:NextFunction) {
         if(!req.isAuthenticated() || req.user.roles.indexOf(role) === -1) {
             res.status(403);

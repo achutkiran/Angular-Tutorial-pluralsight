@@ -22,7 +22,7 @@ export function searchSessions(req:Request, res:Response){
     events.forEach(e => {
         let matchingSessions = e.sessions.filter(s => s.name.toLowerCase().indexOf(term) > -1)
             .map(s => {
-                s['eventId'] = e.id;
+                s.eventId = e.id;
                 return s;
             })
         results = results.concat(matchingSessions);
