@@ -8,8 +8,9 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Event Date</mat-label>
-        <input matInput (ngModel)="newEvent.date" name="date" required type="text" placeholder="format (mm/dd/yyy)...">
-        <mat-error *ngIf="newEventForm.controls['date']?.invalid">Required</mat-error>
+        <input matInput (ngModel)="newEvent.date" name="date" pattern="^(((0)[0-9])|((1)[0-2]))(\/)([0-2][0-9]|(3)[0-1])(\/)\d{4}$" required type="text" placeholder="format (mm/dd/yyy)...">
+        <mat-error *ngIf="newEventForm.controls['date']?.errors?.required">Required</mat-error>
+        <mat-error *ngIf="newEventForm.controls['date']?.errors?.pattern">Please Enter Valid Date</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Event Time</mat-label>
