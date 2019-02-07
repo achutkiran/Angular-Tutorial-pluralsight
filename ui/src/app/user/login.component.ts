@@ -1,6 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
     templateUrl:"./login.component.html",
@@ -16,12 +17,24 @@ import { Router } from '@angular/router';
 export class LoginComponent {
     userName:string
     password:string
+    loginInvalid = false
+    @ViewChild('loginForm') public loginForm: NgForm
 
     constructor(private authService:AuthService, private router: Router) { }
 
     login(formValues) {
         this.authService.loginUser(formValues.userName,formValues.password)
-        this.router.navigate(['events'])
+            .subscribe(data => {
+                if(!data){
+                    this.loginInvalid = true
+                    this.loginForm.form.get('password').setErrors({
+                        serverError: true
+                    })
+                }
+                else {
+                    this.router.navigate(['events'])
+                }
+            })
     }
 
     cancel(){

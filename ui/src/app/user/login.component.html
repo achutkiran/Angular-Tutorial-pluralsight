@@ -9,7 +9,8 @@
     <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
         <input matInput placeholder="Password..." type="password" (ngModel)="password" name="password" required>
-        <mat-error *ngIf="loginForm.controls['password']?.invalid">Password is required</mat-error>
+        <mat-error *ngIf="loginForm.hasError('required',['password'])">Password is required</mat-error>
+        <mat-error *ngIf="loginForm.hasError('serverError',['password'])">User Name / Password Error</mat-error>
     </mat-form-field>
     <div>
         <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Login</button>
