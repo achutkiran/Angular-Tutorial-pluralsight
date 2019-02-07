@@ -14,6 +14,7 @@ import { CreateEventComponent } from './events/create-event.component'
 import { Error404Component } from './errors/404.component'
 import { FormsModule,ReactiveFormsModule } from '@angular/forms'
 import { SearchDialog } from './common/search-dialog.component'
+import { HttpClientModule } from '@angular/common/http'
 
 // Services
 import { EventService } from './events/shared/event.service'
@@ -68,6 +69,7 @@ let toastr:Toastr = window['toastr'];
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     MatToolbarModule,

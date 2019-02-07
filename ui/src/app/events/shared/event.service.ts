@@ -1,47 +1,59 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, of } from 'rxjs';
 import { IEvent, ISession } from './event.model';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { catchError } from 'rxjs/operators';
 
+const apiUrl = environment.apiUrl
 @Injectable()
 export class EventService {
-    getEvents():Observable<IEvent[]>{
-      let subject = new Subject<IEvent[]>()
-      setTimeout(() => {subject.next(EVENTS); subject.complete(); }, 1000)
-      return subject //used to introduce delay to simulate real world data transfer from server
-    }
 
-    getEvent (id:number):IEvent{
-      return EVENTS.find( event => event.id === id)
-    }
+  constructor(private http:HttpClient) { }
+  getEvents():Observable<IEvent[]>{
+    return this.http.get<IEvent[]>(apiUrl+"/events")
+      .pipe(catchError(this.handleError<IEvent[]>('getEvents', [])))
+  }
 
-    saveEvent(event){
-      event.id = 999
-      event.session = []
-      EVENTS.push(event)
+  private handleError<T> (operation="operaion", result?: T) {
+    return (error: any): Observable<T> =>{
+      console.error(error);
+      return of(result as T);
     }
+  }
 
-    updateEvent(event:IEvent){
-      let eventIndex = EVENTS.findIndex(e => e.id == event.id)
-      EVENTS[eventIndex] = event
-    }
+  getEvent (id:number):IEvent{
+    return EVENTS.find( event => event.id === id)
+  }
 
-    searchSessions(searchTerm:string){
-      let term = searchTerm.toLowerCase();
-      let results: ISession [] = [];
-      EVENTS.forEach(event => {
-        event.sessions.forEach(session => {
-          if(session.name.toLowerCase().includes(term)){
-            session['eventId'] = event.id;
-            results.push(session)
-          }
-        })
+  saveEvent(event){
+    event.id = 999
+    event.session = []
+    EVENTS.push(event)
+  }
+
+  updateEvent(event:IEvent){
+    let eventIndex = EVENTS.findIndex(e => e.id == event.id)
+    EVENTS[eventIndex] = event
+  }
+
+  searchSessions(searchTerm:string){
+    let term = searchTerm.toLowerCase();
+    let results: ISession [] = [];
+    EVENTS.forEach(event => {
+      event.sessions.forEach(session => {
+        if(session.name.toLowerCase().includes(term)){
+          session['eventId'] = event.id;
+          results.push(session)
+        }
       })
-      let emitter = new EventEmitter(true);
-      setTimeout(() =>{
-        emitter.emit(results)
-      },100); //to simulate real world
-      return emitter
-    }
+    })
+    let emitter = new EventEmitter(true);
+    setTimeout(() =>{
+      emitter.emit(results)
+    },100); //to simulate real world
+    return emitter
+  }
 }
 
 const EVENTS:IEvent[] = [
