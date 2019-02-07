@@ -11,25 +11,26 @@ export class EventService {
 
   constructor(private http:HttpClient) { }
   getEvents():Observable<IEvent[]>{
-    return this.http.get<IEvent[]>(apiUrl+"/events")
+    return this.http.get<IEvent[]>(apiUrl+"/events",{withCredentials:true})
       .pipe(catchError(this.handleError<IEvent[]>('getEvents', [])))
   }
 
   
   getEvent (id:number):Observable<IEvent>{
-    return this.http.get<IEvent>(apiUrl+`/events/${id}`)
+    return this.http.get<IEvent>(apiUrl+`/events/${id}`,{withCredentials:true})
     .pipe(catchError(this.handleError<IEvent>('getEvent')))
   }
   
   saveEvent(event:IEvent):Observable<IEvent>{
     return this.http.post<IEvent>(apiUrl+`/events`,event,{
-      headers: new HttpHeaders({'Content-Type':'application/json'})
+      headers: new HttpHeaders({'Content-Type':'application/json'}),
+      withCredentials:true
     })
     .pipe(catchError(this.handleError<IEvent>('saveEvent')))
   }
   
   searchSessions(searchTerm:string):Observable<ISession[]>{
-    return this.http.get<ISession[]>(apiUrl+'/sessions/search?search='+searchTerm)
+    return this.http.get<ISession[]>(apiUrl+'/sessions/search?search='+searchTerm,{withCredentials:true})
     .pipe(catchError(this.handleError<ISession[]>('searchSessions')))
   }
   

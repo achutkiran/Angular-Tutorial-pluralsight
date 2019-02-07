@@ -16,7 +16,7 @@ export class VoterService {
     
     deleteVoter(eventId:number,session:ISession, userName:string){
         let url:string = this.apiUrl+`/events/${eventId}/sessions/${session.id}/voters/${userName}`
-        this.http.delete(url)
+        this.http.delete(url,{withCredentials:true})
             .pipe(catchError(this.handleError('deleteVoter')))
             .subscribe(() =>{
                 session.voters = session.voters.filter(v => v != userName)
@@ -26,7 +26,8 @@ export class VoterService {
     addVoter(eventId:number, session:ISession, userName:string){
         let url:string = this.apiUrl+`/events/${eventId}/sessions/${session.id}/voters/${userName}`
         this.http.post(url,{},{
-            headers: new HttpHeaders({'Content-Type':'/application/json'})
+            headers: new HttpHeaders({'Content-Type':'/application/json'}),
+            withCredentials:true
         })
             .pipe(catchError(this.handleError('addVoter')))
             .subscribe(() => {

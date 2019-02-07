@@ -17,7 +17,8 @@ export class AuthService {
             password: password
         }
         return this.http.post(this.apiUrl+"/login",loginInfo,{
-            headers: new HttpHeaders({'Content-Type':'application/json'})
+            headers: new HttpHeaders({'Content-Type':'application/json'}),
+            withCredentials:true
         })
             .pipe(tap(data => {
                 this.currentUser = <IUser>data['user']
@@ -38,5 +39,17 @@ export class AuthService {
 
     fetchCurrentUserName():string {
         return this.currentUser.userName
+    }
+
+    checkAuthenticationStatus() {
+        this.http.get(this.apiUrl+'/currentIdentity',{
+            withCredentials:true
+        })
+            .subscribe(data => {
+                console.log(data)
+                if(data instanceof Object) {
+                    this.currentUser = <IUser> data;
+                }
+            })
     }
 }

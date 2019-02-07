@@ -16,7 +16,7 @@ export function authenticate(req:Request,res:Response,next:NextFunction) {
 
 export function getCurrentIdentity(req:Request, res:Response, next:NextFunction){
     res.status(200).send(req.user);
-    res.send();
+    res.end();
 }
 
 export function requiresApiLogin(req:Request, res:Response, next:NextFunction){

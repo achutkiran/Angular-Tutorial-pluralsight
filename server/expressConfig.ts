@@ -16,7 +16,8 @@ const corsOptions:cors.CorsOptions = {
         else {
             callback(null, false)
         }
-    }
+    },
+    credentials:true
 }
 
 let rootPath = path.normalize(__dirname + '/../../');
