@@ -19,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http'
 // Services
 import { EventService } from './events/shared/event.service'
 import { TOASTR_TOKEN, Toastr } from './common/toastr.service';
-import { EventRouteActivator } from './events/event-details/event-route-activator.service'
+import { EventResolver } from './events/event-resolver.service'
 import { EventListResolver } from './events/events-list-resolver.service'
 import { AuthService } from './user/auth.service'
 import { VoterService } from './events/event-details/voter.service'
@@ -94,8 +94,8 @@ let toastr:Toastr = window['toastr'];
       provide: TOASTR_TOKEN,
       useValue: toastr
     }, 
-    EventRouteActivator,
     EventListResolver,
+    EventResolver,
     AuthService,
     { 
       provide: 'canDeactivateCreateEvent',
