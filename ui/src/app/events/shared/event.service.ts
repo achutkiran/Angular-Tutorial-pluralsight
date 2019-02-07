@@ -27,16 +27,11 @@ export class EventService {
       .pipe(catchError(this.handleError<IEvent>('getEvent')))
   }
 
-  saveEvent(event){
+  saveEvent(event:IEvent){
     return this.http.post<IEvent>(apiUrl+`/events`,event,{
       headers: new HttpHeaders({'Content-Type':'application/json'})
     })
       .pipe(catchError(this.handleError<IEvent>('saveEvent')))
-  }
-
-  updateEvent(event:IEvent){
-    let eventIndex = EVENTS.findIndex(e => e.id == event.id)
-    EVENTS[eventIndex] = event
   }
 
   searchSessions(searchTerm:string){
