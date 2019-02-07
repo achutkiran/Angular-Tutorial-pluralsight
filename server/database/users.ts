@@ -24,6 +24,12 @@ let users: IUser[] = [
         userName: "martinfowler",
         firstName: "Martin",
         lastName: "Fowler"
+    },
+    {
+        id: 5,
+        userName: "achut",
+        firstName: "Achut Kiran",
+        lastName: "Cherukuri"
     }
 ];
   
