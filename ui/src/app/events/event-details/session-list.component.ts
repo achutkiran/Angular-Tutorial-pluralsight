@@ -37,6 +37,7 @@ export class SessionListComponent implements OnChanges{
     @Input() sessions:ISession[]
     @Input() filterBy:string
     @Input() sortBy:string
+    @Input() eventId: number
     visibleSessions: ISession[]
 
     constructor(private voterService:VoterService, private userService:AuthService) { }
@@ -76,7 +77,7 @@ export class SessionListComponent implements OnChanges{
 
     public addVoter(session: ISession){
         let userName = this.userService.fetchCurrentUserName()
-        this.voterService.addVoter(session,userName)
+        this.voterService.addVoter(this.eventId,session,userName)
         if(this.sortBy == "votes"){
             this.visibleSessions.sort(this.sortByVoteDesc)
         }
@@ -84,7 +85,7 @@ export class SessionListComponent implements OnChanges{
     
     public removeVoter(session: ISession){
         let userName = this.userService.fetchCurrentUserName()
-        this.voterService.deleteVoter(session,userName)
+        this.voterService.deleteVoter(this.eventId,session,userName)
         if(this.sortBy == "votes"){
             this.visibleSessions.sort(this.sortByVoteDesc)
         }
