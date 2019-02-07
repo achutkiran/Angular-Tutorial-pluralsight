@@ -27,29 +27,16 @@ export class EventService {
       .pipe(catchError(this.handleError<IEvent>('getEvent')))
   }
 
-  saveEvent(event:IEvent){
+  saveEvent(event:IEvent):Observable<IEvent>{
     return this.http.post<IEvent>(apiUrl+`/events`,event,{
       headers: new HttpHeaders({'Content-Type':'application/json'})
     })
       .pipe(catchError(this.handleError<IEvent>('saveEvent')))
   }
 
-  searchSessions(searchTerm:string){
-    let term = searchTerm.toLowerCase();
-    let results: ISession [] = [];
-    EVENTS.forEach(event => {
-      event.sessions.forEach(session => {
-        if(session.name.toLowerCase().includes(term)){
-          session['eventId'] = event.id;
-          results.push(session)
-        }
-      })
-    })
-    let emitter = new EventEmitter(true);
-    setTimeout(() =>{
-      emitter.emit(results)
-    },100); //to simulate real world
-    return emitter
+  searchSessions(searchTerm:string):Observable<ISession[]>{
+    return this.http.get<ISession[]>(apiUrl+'/sessions/search?search='+searchTerm)
+      .pipe(catchError(this.handleError<ISession[]>('searchSessions')))
   }
 }
 
